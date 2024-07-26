@@ -14,5 +14,6 @@ RUN pip install poetry && \
 COPY . .
 
 RUN ./.venv/Scripts/activate
+EXPOSE 8000
 
 CMD ["fastapi", "run", "main.py"]
