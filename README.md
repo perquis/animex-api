@@ -22,18 +22,18 @@ I prepared for you a docker containers with `docker-compose.yml` file to run the
 
 I prepared for you some frequently asked questions about the project. If you have any questions, feel free to ask me in any discussions of the project.
 
-### What should you know?
+### 1. What should you know?
 
 Remember that this is an unofficial api, so the data may not be 100% accurate. The data is updated in real time, so you can use it to get the latest information about anime and manga. The api is public and free to use, but I recommend that you use it responsibly. This api does not have any kind of authentication, so it is open to everyone. If you want to contribute to the project, feel free to open a pull request 😉.
 
-### Why did I create this api?
+### 2. Why did I create this api?
 
 I created this api to help developers who need to get information about anime and manga from myanimelist.net. I know that the official api isn't existed yet, so I decided to create this api to help the community. I hope you enjoy it and that it helps you in your projects 🚀.
 
-### How can you help me?
+### 3. How can you help me?
 
 You can help me by contributing to the project, giving me feedback, or sharing it with your friends. If you want to contribute to the project, feel free to open a pull request. If you have any suggestions or feedback, you can open an issue. If you want to share it with your friends, you can share the repository link. I appreciate any help you can give me 🙏.
 
-### Why did I create this api with more languages?
+### 4. Why did I create this api with more languages?
 
 Becuase I wanted to learn more about the languages and frameworks that I used in this project. I used Python with FastAPI, Node.js with Express, and C# with .NET. This project helped me to learn more about these languages and frameworks, and I hope it helps you too. If you have any questions about the project, feel free to ask me. I will be happy to help you 🤗.
