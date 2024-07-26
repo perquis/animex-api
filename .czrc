@@ -1,0 +1,17 @@
+{
+  "config": {
+    "commitizenEmoji": {
+      "conventionalFormat": true,
+      "subjectMaxLength": 200,
+      "types": [
+        {
+          "code": ":whale:",
+          "description": "Add or updat the docker settings.",
+          "emoji": "🐋",
+          "name": "docker"
+        }
+      ]
+    }
+  },
+  "path": "./node_modules/commitizen-emoji"
+}
