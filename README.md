@@ -37,3 +37,7 @@ You can help me by contributing to the project, giving me feedback, or sharing i
 ### 4. Why did I create this api with more languages?
 
 Becuase I wanted to learn more about the languages and frameworks that I used in this project. I used Python with FastAPI, Node.js with Express, and C# with .NET. This project helped me to learn more about these languages and frameworks, and I hope it helps you too. If you have any questions about the project, feel free to ask me. I will be happy to help you 🤗.
+
+### 5. What did I learn?
+
+I learned a lot of things by creating this project. I used from web scraping for the first time in my life. It was very interesting problem that I had to resolve. Today, I know what is power of the web scraping and when to use it to provide better features in the future. 📚
