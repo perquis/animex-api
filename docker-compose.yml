@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  redis-client:
+    image: redis:alpine
+    container_name: redis-client
+    ports:
+      - '6379:6379'
+    networks:
+      - animex-api
+
+networks:
+  animex-api:
+    driver: bridge
