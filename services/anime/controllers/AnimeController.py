@@ -114,7 +114,7 @@ def get_anime_object(url: str) -> Dict[str, Optional[str]]:
         "broadcast": {
             "type": data_from_left_sidebar.get("type", None),
             "duration_per_episode": data_from_left_sidebar.get("duration", None),
-            "episodes": int(episodes) if episodes else None,
+            "episodes": episodes if episodes in "Unknown" else int(episodes) if episodes else None,
             "transmission": data_from_left_sidebar.get("broadcast", None),
             "status": data_from_left_sidebar.get("status", None),
             "premiered": data_from_left_sidebar.get("premiered", None),
