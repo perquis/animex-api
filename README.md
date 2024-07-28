@@ -2,8 +2,6 @@
 
 <p align="center">This is unofficial api that shares public data from <a href="https://myanimelist.net/">myanimelist.net</a> about anime and manga in real time 🎏🀄.</p>
 
----
-
 <div align="center" style="margin: 40px 0;">
     <img width="50%" src="https://static.wikia.nocookie.net/enanimanga/images/7/76/Myanimelist_logo.png/revision/latest?cb=20191121020509" alt="my anime list" />
 </div>

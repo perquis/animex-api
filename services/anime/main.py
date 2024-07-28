@@ -9,7 +9,7 @@ app = FastAPI()
 
 @app.get("/api/v1/anime/{anime_id}")
 async def get_anime_info(
-    anime_id: Annotated[int, Path(title="Anime ID", description="The ID of the anime")]
+    anime_id: Annotated[int, Path(title="Anime ID", description="The ID of the anime", ge=1, le=100_000)]
 ):
     url = f"https://myanimelist.net/anime/{anime_id}"
     anime_instance = get_anime_object(url)
