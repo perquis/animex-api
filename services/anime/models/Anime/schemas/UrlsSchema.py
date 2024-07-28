@@ -1,6 +1,6 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 
 
 class UrlsSchema(BaseModel):
-    poster: str | None
-    trailer: str | None
+    poster: HttpUrl | None
+    trailer: HttpUrl | None

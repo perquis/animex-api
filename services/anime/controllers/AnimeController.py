@@ -87,7 +87,17 @@ def get_synopsis(soup: BeautifulSoup) -> Dict[str, Optional[str]]:
     synopsis = soup.find("p", itemprop="description")
     if not synopsis:
         logger.warning("Anime synopsis not found.")
-    return synopsis.get_text(separator=" ", strip=True).replace(" [Written by MAL Rewrite]", "") if synopsis else {}
+    return synopsis.get_text(separator=" ", strip=True).replace(" [Written by MAL Rewrite]", "") if synopsis else None
+
+def get_stats(soup: BeautifulSoup) -> Dict[str, Optional[str]]:
+    """Get the stats of the anime."""
+    stats = {}
+    ranked = soup.find("span", {"class": "numbers ranked"}).get_text(separator=" ", strip=True).replace("Ranked ", "")
+    score = soup.find("div", {"data-title": "score"}).get_text(separator=" ", strip=True)
+    stats["score"] = float(score) if score != "N/A" else None
+    stats["ranked"] = ranked
+
+    return stats
 
 def get_anime_object(url: str) -> Dict[str, Optional[str]]:
     """Compile all anime information into a dictionary."""
@@ -99,6 +109,8 @@ def get_anime_object(url: str) -> Dict[str, Optional[str]]:
     data_from_left_sidebar = get_details_list_from_left_sidebar(soup)
     synopsis = get_synopsis(soup)
     episodes = data_from_left_sidebar.get("episodes")
+
+    stats = get_stats(soup)
 
     return {
         "titles": {
@@ -123,8 +135,8 @@ def get_anime_object(url: str) -> Dict[str, Optional[str]]:
         },
         "stats": {
             "popularity": data_from_left_sidebar.get("popularity", None),
-            "ranked": data_from_left_sidebar.get("ranked", None),
-            "score": data_from_left_sidebar.get("score", None),
+            "ranked": stats.get("ranked", None),
+            "score": stats.get("score", None),
             "members": data_from_left_sidebar.get("members", None),
             "favorites": data_from_left_sidebar.get("favorites", None),
         },
