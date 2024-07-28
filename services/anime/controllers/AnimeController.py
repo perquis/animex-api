@@ -113,7 +113,7 @@ def get_anime_object(url: str) -> Dict[str, Optional[str]]:
     stats = get_stats(soup)
 
     return {
-        "id": int(url.split("/")[-1]),
+        "anime_id": int(url.split("/")[-1]),
         "titles": {
             "synonyms": data_from_left_sidebar.get("synonyms", None),
             "english": data_from_left_sidebar.get("english", None),

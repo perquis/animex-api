@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from .schemas.BroadcastSchema import BroadcastSchema
 from .schemas.DemographicsSchema import DemographicsSchema
@@ -9,7 +9,7 @@ from .schemas.UrlsSchema import UrlsSchema
 
 
 class AnimeModel(BaseModel):
-    id: int
+    anime_id: int
     titles: TitleSchema
     urls: UrlsSchema
     synopsis: str
@@ -22,7 +22,7 @@ class AnimeModel(BaseModel):
         "json_schema_extra": {
             "examples": [
                 {
-                    "id": 20,
+                    "anime_id": 20,
                     "titles": {
                         "english": "Naruto",
                         "japanese": "ナルト",
