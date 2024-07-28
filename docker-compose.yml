@@ -1,14 +1,55 @@
 version: '3.7'
 
 services:
+  nginx-server:
+    tty: true
+    image: nginx:alpine
+    container_name: nginx-server
+    restart: always
+    ports:
+      - '80:80'
+    networks:
+      - animex
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/logs:/var/log/nginx
+    depends_on:
+      - animex-site
+
   redis-client:
+    tty: true
     image: redis:alpine
     container_name: redis-client
+    restart: always
     ports:
       - '6379:6379'
     networks:
-      - animex-api
+      - animex
+    volumes:
+      - redis-data:/data
+
+  animex-site:
+    tty: true
+    build:
+      context: ./apps/animex-site
+      dockerfile: Dockerfile
+    container_name: animex-site
+    restart: always
+    ports:
+      - '3000:3000'
+    networks:
+      - animex
+
+  services-anime:
+    tty: true
+    build:
+      context: ./apps/services-anime
+      dockerfile: Dockerfile
+    container_name: services-anime
+    restart: always
+    ports:
+      - '3001:8000'
 
 networks:
-  animex-api:
+  animex:
     driver: bridge
