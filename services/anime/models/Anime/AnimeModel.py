@@ -9,8 +9,9 @@ from .schemas.UrlsSchema import UrlsSchema
 
 
 class AnimeModel(BaseModel):
-    title: TitleSchema
+    titles: TitleSchema
     urls: UrlsSchema
+    synopsis: str
     broadcast: BroadcastSchema
     stats: StatsSchema
     demographics: DemographicsSchema

@@ -82,6 +82,13 @@ def get_anime_trailer(soup: BeautifulSoup) -> Optional[str]:
         logger.warning("Anime trailer not found.")
     return trailer["href"] if trailer else None
 
+def get_synopsis(soup: BeautifulSoup) -> Dict[str, Optional[str]]:
+    """Get the synopsis of the anime."""
+    synopsis = soup.find("p", itemprop="description")
+    if not synopsis:
+        logger.warning("Anime synopsis not found.")
+    return synopsis.get_text(separator=" ", strip=True).replace(" [Written by MAL Rewrite]", "") if synopsis else {}
+
 def get_anime_object(url: str) -> Dict[str, Optional[str]]:
     """Compile all anime information into a dictionary."""
     html_doc = fetch_html(url)
@@ -90,13 +97,16 @@ def get_anime_object(url: str) -> Dict[str, Optional[str]]:
         return {}
 
     data_from_left_sidebar = get_details_list_from_left_sidebar(soup)
+    synopsis = get_synopsis(soup)
+    episodes = data_from_left_sidebar.get("episodes")
 
     return {
-        "title": {
+        "titles": {
             "synonyms": data_from_left_sidebar.get("synonyms", None),
             "english": data_from_left_sidebar.get("english", None),
             "japanese": data_from_left_sidebar.get("japanese", None),
         },
+        "synopsis": synopsis,
         "urls": {
             "poster": get_anime_poster(soup),
             "trailer": get_anime_trailer(soup),
@@ -104,7 +114,7 @@ def get_anime_object(url: str) -> Dict[str, Optional[str]]:
         "broadcast": {
             "type": data_from_left_sidebar.get("type", None),
             "duration_per_episode": data_from_left_sidebar.get("duration", None),
-            "episodes": data_from_left_sidebar.get("episodes", None),
+            "episodes": int(episodes) if episodes else None,
             "transmission": data_from_left_sidebar.get("broadcast", None),
             "status": data_from_left_sidebar.get("status", None),
             "premiered": data_from_left_sidebar.get("premiered", None),

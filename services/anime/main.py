@@ -14,7 +14,7 @@ app = FastAPI(swagger_ui_parameters={
 
 @app.get("/api/v1/anime/{anime_id}")
 def get_anime_info(
-    anime_id: Annotated[int, Path(title="Anime ID", description="The ID of the anime", ge=1, le=100_000)]
+    anime_id: Annotated[int, Path(title="Anime ID", description="The `ID` of the anime from the **myanimelist**.", ge=1, le=100_000)]
 ) -> AnimeModel:
     url = f"https://myanimelist.net/anime/{anime_id}"
     anime_instance = get_anime_object(url)

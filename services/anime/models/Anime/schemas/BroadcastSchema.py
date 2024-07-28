@@ -1,10 +1,11 @@
+from enums.BroadcastType import BroadcastType
 from pydantic import BaseModel
 
 
 class BroadcastSchema(BaseModel):
-    type: str | None
+    type: BroadcastType | None
     duration_per_episode: str | None
-    episodes: str | None
+    episodes: int | None
     transmission: str | None
     status: str | None
     premiered: str | None
