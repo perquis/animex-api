@@ -1,13 +1,11 @@
-<center><h1>Animex API</h1></center>
+<h1 align="center">Animex API</h1>
 
-<center><p>This is unofficial api that shares public data from myanimelist.net about anime and manga in real time 🎏🀄.</p></center>
+<p align="center">This is unofficial api that shares public data from <a href="https://myanimelist.net/">myanimelist.net</a> about anime and manga in real time 🎏🀄.</p>
 
 ---
 
-<div style="margin: 40px 0;">
-  <center>
+<div align="center" style="margin: 40px 0;">
     <img width="50%" src="https://static.wikia.nocookie.net/enanimanga/images/7/76/Myanimelist_logo.png/revision/latest?cb=20191121020509" alt="my anime list" />
-  </center>
 </div>
 
 ## How to install it?
