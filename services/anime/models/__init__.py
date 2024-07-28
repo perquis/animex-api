@@ -1,1 +1,1 @@
-from .Anime import Anime
+from .Anime import AnimeModel

@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
 
-class Urls(BaseModel):
+class UrlsSchema(BaseModel):
     poster: str | None
     trailer: str | None

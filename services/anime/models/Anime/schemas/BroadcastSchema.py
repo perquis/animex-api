@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class Broadcast(BaseModel):
+class BroadcastSchema(BaseModel):
     type: str | None
     duration_per_episode: str | None
     episodes: str | None

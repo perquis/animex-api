@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class Stats(BaseModel):
+class StatsSchema(BaseModel):
     score: str | None
     ranked: str | None
     popularity: str | None
