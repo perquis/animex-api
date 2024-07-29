@@ -1,8 +1,10 @@
 import logging
 from typing import Dict, Optional
+from urllib.parse import urlencode
 
 import requests
 from bs4 import BeautifulSoup
+from enums.TopAnimeType import TopAnimeType
 from fastapi import HTTPException
 from models import AnimeModel
 from utils.process_data import process_data
@@ -154,6 +156,35 @@ def get_anime_object(url: str) -> Dict[str, Optional[str]]:
             "studios": data_from_left_sidebar.get("studios", None),
         },
     }
+
+def get_top_anime_list(anime_type: TopAnimeType, page: int):
+    top_anime_list_url = "https://myanimelist.net/topanime.php"
+    params = {}
+
+    if anime_type:
+        params['type'] = anime_type.value
+    if page > 1:
+        params['limit'] = (page - 1) * 50
+
+    top_anime_list_url += '?' + urlencode(params)
+
+    html_doc = requests.get(top_anime_list_url).text
+    soup = BeautifulSoup(html_doc, "html.parser")
+    
+    items = soup.find_all("tr", class_="ranking-list")
+    top_anime_list = []
+    for item in items:
+        rank = item.find("td", class_="rank ac").get_text().strip()
+        details = item.find("td", class_="title al va-t word-break")
+        link = details.find("a")
+        poster_url = link.find("img")["data-src"]
+        link_url = link["href"]
+        title = details.find("h3").get_text()
+        anime_id = int(link_url.split("/")[-2])
+        score = item.find("div", class_="js-top-ranking-score-col di-ib al").find("span").get_text().strip()
+        top_anime_list.append({"anime_id": anime_id, "rank": int(rank), "score": float(score), "title": title, "poster_url": poster_url, "link_url": link_url})
+
+    return top_anime_list
 
 def fetch_data(anime_id: int) -> AnimeModel:
     url = f"https://myanimelist.net/anime/{anime_id}"
