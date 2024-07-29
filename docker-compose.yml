@@ -50,6 +50,16 @@ services:
     ports:
       - '3001:8000'
 
+  services-search:
+    tty: true
+    build:
+      context: ./apps/services-search
+      dockerfile: Dockerfile
+    container_name: services-search
+    restart: always
+    ports:
+      - '3002:8000'
+
 networks:
   animex:
     driver: bridge
