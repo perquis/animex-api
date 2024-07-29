@@ -13,6 +13,8 @@ I prepared for you a docker containers with `docker-compose.yml` file to run the
 1. Clone the repository:
 2. Run the command `docker-compose up -d` to start the containers.
 3. Access the api in the browser at `http://localhost:8000`.
+4. You can visit the documentation at `http://localhost:8000/docs` to see the all endpoints with examples, responses and errors.
+5. Enjoy the api 🚀.
 
 ## Frequently Asked Questions
 
@@ -36,4 +38,4 @@ Becuase I wanted to learn more about the languages and frameworks that I used in
 
 ### 5. What did I learn?
 
-I learned a lot of things by creating this project. I used from web scraping for the first time in my life. It was very interesting problem that I had to resolve. Today, I know what is power of the web scraping and when to use it to provide better features in the future. 📚
+I learned a lot of things by creating this project. I used from web scraping for the first time in my life. It was very interesting problem that I had to resolve. Today, I know what is power of the web scraping and when to use it to provide better features in the future 📚.
