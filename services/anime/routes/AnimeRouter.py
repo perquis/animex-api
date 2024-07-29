@@ -25,4 +25,39 @@ def get_anime_info(
     return use_redis_cache(f"get_anime_info:{anime_id}", fetch_data)
 
 
-anime_router.add_api_route("/anime/{anime_id}", get_anime_info, methods=["GET"], dependencies=[Depends(RateLimiter(times=100, seconds=10))])
+anime_router.add_api_route(
+    "/anime/{anime_id}", 
+    get_anime_info, 
+    methods=["GET"], 
+    dependencies=[
+        Depends(RateLimiter(times=100, seconds=10))
+        ],
+    tags=["Anime"],
+    summary="Get anime information",
+    description="Get anime information from **myanimelist**.",
+    responses={
+        200: {
+            "description": "Anime information retrieved successfully.",
+        },
+        404: {
+            "description": "Anime not found.",
+            "content": {
+                "application/json": {
+                    "example": {
+                        "detail": "Anime not found.",
+                    }
+                }
+            }
+        },
+        429: {
+            "description": "Too many requests.",
+            "content": {
+                "application/json": {
+                    "example": {
+                        "detail": "Too many requests.",
+                    }
+                }
+            }
+        }
+    }
+)
