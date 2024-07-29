@@ -5,11 +5,16 @@ from fastapi_limiter import FastAPILimiter
 from routes.AnimeRouter import anime_router
 from Secweb.ContentSecurityPolicy import ContentSecurityPolicy
 
-app = FastAPI(swagger_ui_parameters={
-    "syntaxHighlight": {
-        "theme": "arta"
-    }
-})
+app = FastAPI(
+    swagger_ui_parameters={
+        "syntaxHighlight": {
+            "theme": "arta"
+        },
+    }, 
+    title="animex-api",
+    version="1.0.0", 
+    description="This is unofficial api that shares public data from <a href='https://myanimelist.net/' target='_blank'>myanimelist.net</a> about anime and manga in real time 🎏🀄."
+)
 
 @app.on_event("startup")
 async def startup():
