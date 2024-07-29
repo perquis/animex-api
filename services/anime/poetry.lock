@@ -809,6 +809,17 @@ pygments = ">=2.13.0,<3.0.0"
 jupyter = ["ipywidgets (>=7.5.1,<9)"]
 
 [[package]]
+name = "secweb"
+version = "1.11.0"
+description = "Secweb is a pack of security middlewares for fastApi and starlette servers it includes CSP, HSTS, and many more"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "Secweb-1.11.0-py3-none-any.whl", hash = "sha256:2e398e65f053488e1c2caa79b5dc285f3c7ba5c639da49f2648dc41a04e59781"},
+    {file = "secweb-1.11.0.tar.gz", hash = "sha256:76fd7971209faa576e9a634810c7b29035eaa23abea611ee9c7b78b9337d5f7d"},
+]
+
+[[package]]
 name = "shellingham"
 version = "1.5.4"
 description = "Tool to Detect Surrounding Shell"
@@ -1143,4 +1154,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "52aef725164dd60c4229ea43dc3f73a32f3d8d25ff5106bbbb252de351812bc4"
+content-hash = "abbb77ab2d63e3ae38c7ece4df011d6420acee5395a91dd868998f2b7edeb775"

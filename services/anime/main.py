@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi_limiter import FastAPILimiter
 from routes.AnimeRouter import anime_router
+from Secweb.ContentSecurityPolicy import ContentSecurityPolicy
 
 app = FastAPI(swagger_ui_parameters={
     "syntaxHighlight": {
@@ -22,5 +23,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.add_middleware(ContentSecurityPolicy, Option={
+    'connect-src': ["'self'"], 
+    'frame-src': ["'self'"]
+})
 
 app.include_router(anime_router, prefix="/api/v1")
