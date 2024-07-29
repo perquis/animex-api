@@ -173,6 +173,7 @@ def get_top_anime_list(anime_type: TopAnimeType, page: int):
     
     items = soup.find_all("tr", class_="ranking-list")
     top_anime_list = []
+    
     for item in items:
         rank = item.find("td", class_="rank ac").get_text().strip()
         details = item.find("td", class_="title al va-t word-break")
@@ -182,7 +183,15 @@ def get_top_anime_list(anime_type: TopAnimeType, page: int):
         title = details.find("h3").get_text()
         anime_id = int(link_url.split("/")[-2])
         score = item.find("div", class_="js-top-ranking-score-col di-ib al").find("span").get_text().strip()
-        top_anime_list.append({"anime_id": anime_id, "rank": int(rank), "score": float(score), "title": title, "poster_url": poster_url, "link_url": link_url})
+        
+        top_anime_list.append({
+            "anime_id": anime_id, 
+            "rank": int(rank), 
+            "score": float(score) if score != "N/A" else None, 
+            "title": title,
+            "poster_url": poster_url, 
+            "link_url": link_url
+        })
 
     return top_anime_list
 
