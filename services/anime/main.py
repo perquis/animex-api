@@ -1,9 +1,8 @@
-import redis.asyncio as redis
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi_limiter import FastAPILimiter
 from routes.AnimeRouter import anime_router
 from Secweb.ContentSecurityPolicy import ContentSecurityPolicy
+from services.redis import lifespan
 
 app = FastAPI(
     swagger_ui_parameters={
@@ -13,13 +12,11 @@ app = FastAPI(
     }, 
     title="animex-api",
     version="1.0.0", 
-    description="This is unofficial api that shares public data from <a href='https://myanimelist.net/' target='_blank'>myanimelist.net</a> about anime and manga in real time 🎏🀄."
+    description="This is unofficial api that shares public data from <a href='https://myanimelist.net/' target='_blank'>myanimelist.net</a> about anime and manga in real time 🎏🀄.",
+    lifespan=lifespan,
+    docs_url="/api/v1/docs",
+    redoc_url="/api/v1/redoc"
 )
-
-@app.on_event("startup")
-async def startup():
-    redis_connection = redis.from_url("redis://localhost", encoding="utf-8", decode_responses=True)
-    await FastAPILimiter.init(redis_connection)
 
 app.add_middleware(
     CORSMiddleware,
