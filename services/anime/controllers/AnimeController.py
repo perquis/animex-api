@@ -4,6 +4,8 @@ from typing import Dict, Optional
 import requests
 from bs4 import BeautifulSoup
 from fastapi import HTTPException
+from models import AnimeModel
+from utils.process_data import process_data
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -152,3 +154,12 @@ def get_anime_object(url: str) -> Dict[str, Optional[str]]:
             "studios": data_from_left_sidebar.get("studios", None),
         },
     }
+
+def fetch_data(anime_id: int) -> AnimeModel:
+    url = f"https://myanimelist.net/anime/{anime_id}"
+    anime_instance = get_anime_object(url)
+
+    process_data(anime_instance['production'])
+    process_data(anime_instance['demographics'])
+
+    return anime_instance
