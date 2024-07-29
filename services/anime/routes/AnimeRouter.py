@@ -1,7 +1,8 @@
 from typing import Annotated
 
 from controllers.AnimeController import get_anime_object
-from fastapi import APIRouter, Path
+from fastapi import APIRouter, Depends, Path
+from fastapi_limiter.depends import RateLimiter
 from models import AnimeModel
 from utils.cache import use_redis_cache
 from utils.process_data import process_data
@@ -24,4 +25,4 @@ def get_anime_info(
     return use_redis_cache(f"get_anime_info:{anime_id}", fetch_data)
 
 
-anime_router.add_api_route("/anime/{anime_id}", get_anime_info, methods=["GET"])
+anime_router.add_api_route("/anime/{anime_id}", get_anime_info, methods=["GET"], dependencies=[Depends(RateLimiter(times=100, seconds=10))])

@@ -12,6 +12,7 @@ requests = "^2.32.3"
 beautifulsoup4 = "^4.12.3"
 pydantic = "^2.8.2"
 redis = "^5.0.7"
+fastapi-limiter = "^0.1.6"
 
 
 [build-system]
