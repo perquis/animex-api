@@ -11,7 +11,6 @@
     "allowArbitraryExtensions": true /* Enable importing files with any extension, provided a declaration file is present. */,
 
     "isolatedModules": true /* Ensure that each file can be safely transpiled without relying on other imports. */,
-    "verbatimModuleSyntax": true /* Do not transform or elide any imports or exports not marked as type-only, ensuring they are written in the output file's format based on the 'module' setting. */,
     "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
     // "preserveSymlinks": true,                         /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
     "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
